@@ -3,10 +3,12 @@ package com.example.doanandroid.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -105,8 +107,20 @@ public class ChiTietActivity extends AppCompatActivity {
         imgage = findViewById(R.id.imgchitiet);
         toolbar = findViewById(R.id.toolbar);
         badge = findViewById(R.id.menu_sl);
+        FrameLayout frameLayoutgiohang = findViewById(R.id.framegiohang);
+        frameLayoutgiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giohang  = new Intent(getApplicationContext(),GioHangActivity.class);
+                startActivity(giohang);
+            }
+        });
         if(Server.manggiohang !=null){
-            badge.setText(String.valueOf(Server.manggiohang.size()));
+            int totalItem = 0;
+            for(int i =0;i<Server.manggiohang.size();i++){
+                totalItem =totalItem+Server.manggiohang.get(i).getSoluong();
+            }
+            badge.setText(String.valueOf(totalItem));
         }
     }
     private void ActionBar() {
@@ -118,5 +132,17 @@ public class ChiTietActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(Server.manggiohang !=null){
+            int totalItem = 0;
+            for(int i =0;i<Server.manggiohang.size();i++){
+                totalItem =totalItem+Server.manggiohang.get(i).getSoluong();
+            }
+            badge.setText(String.valueOf(totalItem));
+        }
     }
 }

@@ -18,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ import com.example.doanandroid.retrofit.ApiBanHang;
 import com.example.doanandroid.retrofit.RetrofitClient;
 import com.example.doanandroid.ultil.Server;
 import com.google.android.material.navigation.NavigationView;
+import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -56,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
     List<Sanpham> mangspmoi;
     SanphamAdapter sanphamAdapter;
+
+    NotificationBadge badge;
+    FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,7 +186,8 @@ public class MainActivity extends AppCompatActivity {
         navigationView = (NavigationView) findViewById(R.id.navigationview);
         listViewManHinhChinh = (ListView) findViewById(R.id.listViewmanhinhchinh);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-
+        badge = findViewById(R.id.menu_sl);
+        frameLayout = findViewById(R.id.framegiohang);
         mangloaisp  = new ArrayList<>();
 
         mangspmoi = new ArrayList<>();
@@ -189,9 +195,34 @@ public class MainActivity extends AppCompatActivity {
         if(Server.manggiohang == null){
             Server.manggiohang = new ArrayList<>();
         }
+        else {
+                int totalItem = 0;
+                for(int i =0;i<Server.manggiohang.size();i++){
+                    totalItem =totalItem+Server.manggiohang.get(i).getSoluong();
+                }
+                badge.setText(String.valueOf(totalItem));
+
+        }
+        frameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giohang = new Intent(getApplicationContext(),GioHangActivity.class);
+                startActivity(giohang);
+            }
+        });
 
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int totalItem = 0;
+        for(int i =0;i<Server.manggiohang.size();i++){
+            totalItem =totalItem+Server.manggiohang.get(i).getSoluong();
+        }
+        badge.setText(String.valueOf(totalItem));
     }
 
     private boolean isConnected(Context context){

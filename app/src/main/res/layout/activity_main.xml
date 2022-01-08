@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -23,7 +24,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
             >
+                <FrameLayout
+                    android:id="@+id/framegiohang"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="right"
+                    android:layout_width="60dp"
+                    android:layout_height="?attr/actionBarSize">
+                    <com.nex3z.notificationbadge.NotificationBadge
+                        android:layout_gravity="top|right"
+                        android:id="@+id/menu_sl"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp">
 
+                    </com.nex3z.notificationbadge.NotificationBadge>
+                    <ImageView
+                        android:layout_marginTop="15dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_cart_24"></ImageView>
+                </FrameLayout>
             </androidx.appcompat.widget.Toolbar>
             <ViewFlipper
                 android:id="@+id/viewlipper"
