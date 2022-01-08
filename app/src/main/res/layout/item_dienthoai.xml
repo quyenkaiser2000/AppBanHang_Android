@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="8dp"
+    app:cardCornerRadius="4dp"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/itemdt_image"
+            android:layout_weight="3"
+            android:src="@drawable/anew"
+            android:layout_width="0dp"
+            android:layout_height="100dp">
+
+        </ImageView>
+        <LinearLayout
+            android:layout_weight="7"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/itemdt_tensp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên sản phẩm"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                >
+
+            </TextView>
+            <TextView
+                android:id="@+id/itemdt_gia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giá: 250000Đ"
+                android:textSize="16sp"
+                android:textColor="@android:color/holo_red_light"
+                >
+
+            </TextView>
+            <TextView
+                android:id="@+id/itemdt_mota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mô tả:"
+                android:textSize="14sp"
+                >
+
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
