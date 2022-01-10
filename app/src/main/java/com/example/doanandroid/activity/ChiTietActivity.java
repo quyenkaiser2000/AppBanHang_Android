@@ -83,6 +83,7 @@ public class ChiTietActivity extends AppCompatActivity {
             Server.manggiohang.add(gioHang);
 
         }
+
         badge.setText(String.valueOf(Server.manggiohang.size()));
     }
 
