@@ -1,5 +1,6 @@
 package com.example.doanandroid.retrofit;
 
+import com.example.doanandroid.model.DonHangModel;
 import com.example.doanandroid.model.LoaispModel;
 import com.example.doanandroid.model.SanphamModel;
 import com.example.doanandroid.model.UserModel;
@@ -57,5 +58,11 @@ public interface ApiBanHang {
             @Field("diachi") String diachi,
             @Field("soluong") int soluong,
             @Field("chitiet") String chitiet
+    );
+
+    @POST("xemdonhang.php")
+    @FormUrlEncoded
+    Observable<DonHangModel> xemDonHang(
+            @Field("iduser") int id
     );
 }

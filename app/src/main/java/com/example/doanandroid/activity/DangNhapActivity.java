@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -27,6 +28,7 @@ public class DangNhapActivity extends AppCompatActivity {
     AppCompatButton btndangnhap;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable= new CompositeDisposable();
+    boolean isLogin = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,26 +67,8 @@ public class DangNhapActivity extends AppCompatActivity {
 
                     Paper.book().write("email",str_email);
                     Paper.book().write("pass",str_pass);
+                    dangnhap(str_email,str_pass);
 
-                    compositeDisposable.add(apiBanHang.dangnhap(str_email,str_pass)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(
-                            userModel -> {
-                                if(userModel.isSuccess()){
-                                    Server.user_current = userModel.getResult().get(0);
-                                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }else {
-                                    Toast.makeText(getApplicationContext(), userModel.getMessage(), Toast.LENGTH_SHORT).show();
-                                    System.out.println("that bai");
-                                }
-                            },
-                            throwable -> {
-                                Toast.makeText(getApplicationContext(),throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                    ));
                 }
 
             }
@@ -104,8 +88,43 @@ public class DangNhapActivity extends AppCompatActivity {
         if(Paper.book().read("email") != null && Paper.book().read("pass") != null){
             email.setText(Paper.book().read("mail"));
             pass.setText(Paper.book().read("pass"));
-
+            if(Paper.book().read("islogin") != null){
+                boolean flag = Paper.book().read("islogin");
+                if(flag){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            dangnhap(Paper.book().read("mail"),Paper.book().read("mail"));
+                        }
+                    },1000);
+                }
+            }
         }
+    }
+
+    private void dangnhap(String email, String pass) {
+        compositeDisposable.add(apiBanHang.dangnhap(email,pass)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        userModel -> {
+                            if(userModel.isSuccess()){
+                                isLogin = true;
+                                Paper.book().write("islogin",isLogin);
+                                Server.user_current = userModel.getResult().get(0);
+                                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }else {
+                                Toast.makeText(getApplicationContext(), userModel.getMessage(), Toast.LENGTH_SHORT).show();
+                                System.out.println("that bai");
+                            }
+                        },
+                        throwable -> {
+                            Toast.makeText(getApplicationContext(),throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                ));
+
     }
 
     @Override
