@@ -2,4 +2,10 @@
     <string name="app_name">DoAnAndroid</string>
     <string name="ng_nh_p">Đăng nhập</string>
     <string name="ng_k">Đăng ký</string>
+    <string name="t_ng_ti_n">Tổng tiền:</string>
+    <string name="_25_000">25.000</string>
+    <string name="_0966735303">0966735303</string>
+    <string name="examble_gmail_com">examble@gmail.com</string>
+    <string name="nh_p_a_ch_giao_h_ng">Nhập địa chỉ giao hàng</string>
+    <string name="t_h_ng">Đặt hàng</string>
 </resources>
