@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DoAnAndroid</string>
+    <string name="ng_nh_p">Đăng nhập</string>
+    <string name="ng_k">Đăng ký</string>
 </resources>
