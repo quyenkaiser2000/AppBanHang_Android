@@ -14,6 +14,15 @@
         android:theme="@style/Theme.DoAnAndroid"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.ThongTinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LienHeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.XemDonActivity"
             android:exported="false" />
         <activity

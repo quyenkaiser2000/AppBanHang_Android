@@ -22,8 +22,19 @@
                 android:background="#4665ce"
                 app:title="Trang Chính"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-            >
+                android:layout_height="?attr/actionBarSize">
+                <LinearLayout
+                    android:layout_gravity="right"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize">
+                    <ImageView
+                        android:id="@+id/imgsearch"
+                        android:layout_marginRight="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="?attr/actionBarSize"
+                        android:src="@drawable/ic_baseline_search_24"></ImageView>
+
                 <FrameLayout
                     android:id="@+id/framegiohang"
                     android:layout_marginRight="10dp"
@@ -43,6 +54,7 @@
                         android:layout_height="40dp"
                         android:src="@drawable/ic_cart_24"></ImageView>
                 </FrameLayout>
+                </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
             <ViewFlipper
                 android:id="@+id/viewlipper"

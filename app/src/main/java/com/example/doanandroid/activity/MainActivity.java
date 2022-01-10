@@ -1,11 +1,11 @@
 package com.example.doanandroid.activity;
 
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -45,8 +45,9 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
-    Toolbar toolbar;
+
     ViewFlipper viewFlipper;
+    Toolbar toolbar;
     RecyclerView recyclerViewmanghinhchinh;
     NavigationView navigationView;
     ListView listViewManHinhChinh;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     NotificationBadge badge;
     FrameLayout frameLayout;
-
+    ImageView imgsearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +106,14 @@ public class MainActivity extends AppCompatActivity {
                         Intent laptop = new Intent(getApplicationContext(),DienThoaiActivity.class);
                         laptop.putExtra("loai",2);
                         startActivity(laptop);
+                        break;
+                    case 3:
+                        Intent lienhe = new Intent(getApplicationContext(),LienHeActivity.class);
+                        startActivity(lienhe);
+                        break;
+                    case 4:
+                        Intent thongtin = new Intent(getApplicationContext(),ThongTinActivity.class);
+                        startActivity(thongtin);
                         break;
                     case 5:
                         Intent donhang = new Intent(getApplicationContext(),XemDonActivity.class);
@@ -181,7 +190,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Anhxa() {
-        toolbar = (Toolbar) findViewById(R.id.toolbarmanhinhchinh);
+        toolbar = findViewById(R.id.toolbarmanhinhchinh);
+        imgsearch = findViewById(R.id.imgsearch);
         viewFlipper = (ViewFlipper) findViewById(R.id.viewlipper);
         recyclerViewmanghinhchinh = (RecyclerView) findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this,2);
@@ -214,7 +224,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(giohang);
             }
         });
-
+        imgsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
