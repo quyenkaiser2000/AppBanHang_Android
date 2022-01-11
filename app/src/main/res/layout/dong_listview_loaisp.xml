@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/common_signin_btn_icon_dark"
+            android:src="@drawable/ic_baseline_location_on_24"
             android:layout_margin="5dp"
             android:id="@+id/imageviewloaisp"
             android:layout_width="45dp"

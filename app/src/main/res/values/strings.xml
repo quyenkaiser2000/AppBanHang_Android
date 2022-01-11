@@ -8,4 +8,7 @@
     <string name="examble_gmail_com">examble@gmail.com</string>
     <string name="nh_p_a_ch_giao_h_ng">Nhập địa chỉ giao hàng</string>
     <string name="t_h_ng">Đặt hàng</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_mapmini">MapminiActivity</string>
 </resources>
