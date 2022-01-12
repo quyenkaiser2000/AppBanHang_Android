@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(lienhe);
                         break;
                     case 4:
-                        Intent thongtin = new Intent(getApplicationContext(),ThongTinActivity.class);
-                        startActivity(thongtin);
+                        Intent mapmini = new Intent(getApplicationContext(),MapminiActivity.class);
+                        startActivity(mapmini);
                         break;
                     case 5:
                         Intent donhang = new Intent(getApplicationContext(),XemDonActivity.class);

@@ -1,8 +1,11 @@
 package com.example.doanandroid.activity;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.doanandroid.R;
 import com.example.doanandroid.databinding.ActivityThongTinBinding;
@@ -13,22 +16,36 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapminiActivity extends FragmentActivity implements OnMapReadyCallback {
-
+public class MapminiActivity extends AppCompatActivity implements OnMapReadyCallback {
+    Toolbar toolbar;
     private GoogleMap mMap;
     private ActivityThongTinBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("okokok");
         binding = ActivityThongTinBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        initView();
+        ActionBar();
 
+    }
+    private void initView() {
+        toolbar = findViewById(R.id.toolbar);
+    }
+    private void ActionBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     /**
@@ -46,7 +63,7 @@ public class MapminiActivity extends FragmentActivity implements OnMapReadyCallb
 
         // Add a marker in Sydney and move the camera
        // LatLng sydney = new LatLng(-34, 151);
-        LatLng cuahang = new LatLng(10.924010, 10.924010);
+        LatLng cuahang = new LatLng(10.907290, 106.643590);
 
         mMap.addMarker(new MarkerOptions().position(cuahang).title("SellPhoneS"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cuahang));
