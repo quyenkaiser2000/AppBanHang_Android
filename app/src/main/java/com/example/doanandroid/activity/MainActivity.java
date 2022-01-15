@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(dienthoai);
                         break;
                     case 2:
-                        Intent laptop = new Intent(getApplicationContext(),DienThoaiActivity.class);
+                        Intent laptop = new Intent(getApplicationContext(),LaptopActivity.class);
                         laptop.putExtra("loai",2);
                         startActivity(laptop);
                         break;
@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
                     case 5:
                         Intent donhang = new Intent(getApplicationContext(),XemDonActivity.class);
                         startActivity(donhang);
+                        break;
+                    case 6:
+                        Intent map = new Intent(getApplicationContext(),mapsActivity.class);
+                        startActivity(map);
                         break;
                 }
             }

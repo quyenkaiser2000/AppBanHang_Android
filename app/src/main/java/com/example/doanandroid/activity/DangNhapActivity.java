@@ -57,6 +57,7 @@ public class DangNhapActivity extends AppCompatActivity {
         btndangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("11");
                 String str_email = email.getText().toString().trim();
                 String str_pass = pass.getText().toString().trim();
                 if (TextUtils.isEmpty(str_email)) {

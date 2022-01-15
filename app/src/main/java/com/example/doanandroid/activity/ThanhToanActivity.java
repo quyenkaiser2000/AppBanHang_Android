@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.doanandroid.R;
+import com.example.doanandroid.adapter.GioHangAdapter;
 import com.example.doanandroid.retrofit.ApiBanHang;
 import com.example.doanandroid.retrofit.RetrofitClient;
 import com.example.doanandroid.ultil.Server;
@@ -33,6 +34,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     AppCompatButton btndathang;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
+    GioHangAdapter gioHangAdapter;
     long tongtien;
     int totalItem;
     @Override
@@ -69,6 +71,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         btndathang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
                 String str_diachi = dtdiachi.getText().toString().trim();
@@ -87,12 +90,15 @@ public class ThanhToanActivity extends AppCompatActivity {
                             userModel ->{
                                 startActivity(intent);
                                 finish();
+
                             },
                                 throwable -> {
                                     Toast.makeText(getApplicationContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                     ));
+
                 }
+                Server.manggiohang.clear();
             }
         });
 
